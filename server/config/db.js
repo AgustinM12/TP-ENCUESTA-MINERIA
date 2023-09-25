@@ -9,7 +9,6 @@ export const sequelize = new Sequelize(
         host: environment.DB.DB_HOST,
         dialect: environment.DB.DB_DIALECT,
         port: environment.DB.DB_PORT,
-
     }
 );
 

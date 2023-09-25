@@ -5,6 +5,8 @@ import { Pregunta } from "./preguntas.model.js";
 import { Respuesta } from "./respuestas.model.js";
 import { Usuario } from "./usuarios.model.js";
 
+sequelize.options.timezone = '-03:00';
+
 export const PreguntaRespuesta = sequelize.define("PreguntaRespuesta", {
     idAQ: {
         type: DataTypes.INTEGER,
@@ -25,7 +27,7 @@ export const PreguntaRespuesta = sequelize.define("PreguntaRespuesta", {
         allowNull: false,
     }
 }, {
-    timestamps: false,
+    timestamps: true,
     underscored: true,
     tableName: "Preguntas_Respuestas"
 });
