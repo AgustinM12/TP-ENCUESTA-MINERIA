@@ -14,7 +14,7 @@ export const sequelize = new Sequelize(
 
 export async function syncDB() {
     try {
-        await sequelize.authenticate()
+        await sequelize.sync({ force: false });
     } catch (error) {
         console.log(error)
     }
