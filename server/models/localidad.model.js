@@ -19,25 +19,22 @@ export const Localidad = sequelize.define("Localidad", {
     modelName: "Localidad"
 });
 
-async () => {
+
+Localidad.afterSync(async () => {
     const count = await Localidad.count();
     if (count === 0) {
-        try {
-            await Localidad.bulkCreate([
-                { opcionLocalidad: 'Formosa Capital' },
-                { opcionLocalidad: 'Colonia Pastoril' },
-                { opcionLocalidad: 'Gran Guardia' },
-                { opcionLocalidad: 'Mariano Boedo' },
-                { opcionLocalidad: 'Mojón de Fierro' },
-                { opcionLocalidad: 'San Hilario' },
-                { opcionLocalidad: 'Villa del Carmen' },
-                { opcionLocalidad: 'Villa Trinidad' },
-                { opcionLocalidad: 'Puerto Dalmacia' },
-                { opcionLocalidad: 'Tres Marias' },
-            ]);
-            console.log('registros de localidades creados exitosamente');
-        } catch (error) {
-            console.error('Error al crear los registros localidades', error);
-        }
+
+        await Localidad.bulkCreate([
+            { opcionLocalidad: 'Formosa Capital' },
+            { opcionLocalidad: 'Colonia Pastoril' },
+            { opcionLocalidad: 'Gran Guardia' },
+            { opcionLocalidad: 'Mariano Boedo' },
+            { opcionLocalidad: 'Mojón de Fierro' },
+            { opcionLocalidad: 'San Hilario' },
+            { opcionLocalidad: 'Villa del Carmen' },
+            { opcionLocalidad: 'Villa Trinidad' },
+            { opcionLocalidad: 'Puerto Dalmacia' },
+            { opcionLocalidad: 'Tres Marias' },
+        ]);
     }
-}
+});

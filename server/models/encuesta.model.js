@@ -1,6 +1,10 @@
 import { sequelize } from "../config/db.js";
 import { DataTypes } from "sequelize";
 
+import { Genero } from "./genero.model.js";
+import { Localidad } from "./localidad.model.js";
+import { Educacion } from "./nivelEstudio.model.js"
+
 sequelize.options.timezone = '-03:00';
 
 export const Encuesta = sequelize.define("Encuesta", {
@@ -12,14 +16,26 @@ export const Encuesta = sequelize.define("Encuesta", {
     idGenero: {
         type: DataTypes.INTEGER,
         allowNull: false,
-    },
-    idEducacion: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+        // references: {
+        //     model: "Genero",
+        //     key: "idGenero"
+        // }
     },
     idLocalidad: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        // references: {
+        //     model: "Localidad",
+        //     key: "idLocalidad"
+        // }
+    },
+    idEducacion: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        // references: {
+        //     model: "Educacion",
+        //     key: "idEducacion"
+        // }
     },
     edad: {
         type: DataTypes.INTEGER,
@@ -60,12 +76,16 @@ export const Encuesta = sequelize.define("Encuesta", {
     modelName: "Encuesta"
 });
 
+Localidad.belongsTo(Encuesta, { foreignKey: "idLocalidad" });
+Encuesta.hasMany(Localidad, { foreignKey: "idLocalidad" });
 
-// Encuesta.belongsTo(Localidad, { foreignKey: "idLocalidad" });
-// Localidad.hasMany(Encuesta, { foreignKey: "idLocalidad" });
+Educacion.belongsTo(Encuesta, { foreignKey: "idEducacion" });
+Encuesta.hasMany(Educacion, { foreignKey: "idEducacion" });
 
-// Encuesta.belongsTo(Educacion, { foreignKey: "idEducacion" });
-// Educacion.hasMany(Encuesta, { foreignKey: "idEducacion" });
+Genero.belongsTo(Encuesta, { foreignKey: "idGenero" });
+Encuesta.hasMany(Genero, { foreignKey: "idGenero" });
 
-// Encuesta.belongsTo(Genero, { foreignKey: "idGenero" });
-// Genero.hasMany(Encuesta, { foreignKey: "idGenero" });
+await Educacion.sync();
+await Localidad.sync();
+await Genero.sync();
+await Encuesta.sync()

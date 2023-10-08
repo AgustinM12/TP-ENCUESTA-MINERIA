@@ -18,3 +18,16 @@ export const Genero = sequelize.define("Genero", {
     modelName: "Genero"
 });
 
+Genero.afterSync(async () => {
+    // Verifica si ya existen registros en la tabla Genero
+    const generoCount = await Genero.count();
+
+    // Si no existen registros, crea los registros "hombre" y "mujer"
+    if (generoCount === 0) {
+        await Genero.bulkCreate([
+            { idGenero: 1, opcionesGeneros: 'Hombre' },
+            { idGenero: 2, opcionesGeneros: 'Mujer' },
+            { idGenero: 3, opcionesGeneros: 'Otro' },
+        ]);
+    }
+});

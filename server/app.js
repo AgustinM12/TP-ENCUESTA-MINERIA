@@ -8,7 +8,7 @@ import { createLogs } from "./helpers/logs.js"
 import { environment } from "./config/environment.js";
 import { syncDB } from "./config/db.js";
 
-import "./helpers/relations.js";
+import "./models/encuesta.model.js";
 
 const app = express()
 

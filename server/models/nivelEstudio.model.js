@@ -1,5 +1,7 @@
 import { sequelize } from "../config/db.js";
 import { DataTypes } from "sequelize";
+import { Encuesta } from "./encuesta.model.js";
+
 
 export const Educacion = sequelize.define("Educacion", {
     idEducacion: {
@@ -18,21 +20,18 @@ export const Educacion = sequelize.define("Educacion", {
     modelName: "Educacion"
 });
 
-async () => {
+
+Educacion.afterSync(async () => {
+
     const count = await Educacion.count();
     if (count === 0) {
-        try {
             await Educacion.bulkCreate([
                 { opcionEducacion: 'Primario Incompleto' },
                 { opcionEducacion: 'Primario Completo' },
                 { opcionEducacion: 'Secundario Incompleto' },
                 { opcionEducacion: 'Secundario Completo' },
-                { opcionEducacion: 'Terciario Incompletoo' },
+                { opcionEducacion: 'Terciario Incompleto' },
                 { opcionEducacion: 'Terciario Completo' },
             ]);
-            console.log('registros de Educacion creados exitosamente');
-        } catch (error) {
-            console.error('Error al crear los registros Educacion', error);
-        }
     }
-}
+});
