@@ -7,8 +7,7 @@ import "dotenv/config"
 import { createLogs } from "./helpers/logs.js"
 import { environment } from "./config/environment.js";
 import { syncDB } from "./config/db.js";
-
-import "./models/encuesta.model.js";
+import {encuestaRouter} from "./routes/encuesta.routes.js";
 
 const app = express()
 
@@ -26,10 +25,8 @@ app.use(morgan("combined", {
         }
     }
 }));
-
-app.get("/", (req, res) => {
-    res.send()
-})
+app.use(express.json());
+app.use(encuestaRouter)
 
 app.listen(environment.PORT, async () => {
     try {

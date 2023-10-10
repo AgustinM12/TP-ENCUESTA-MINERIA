@@ -1,37 +1,30 @@
 import { sequelize } from "../config/db.js";
 import { DataTypes } from "sequelize";
-import { Encuesta } from "./encuesta.model.js";
 
 
 export const Educacion = sequelize.define("Educacion", {
-    idEducacion: {
+    id_educacion: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    opcionEducacion: {
+    opcion_educacion: {
         type: DataTypes.STRING,
         allowNull: false,
     }
 }, {
     timestamps: false,
-    underscored: true,
     tableName: "Nivel_Educacion",
     modelName: "Educacion"
 });
 
-
-Educacion.afterSync(async () => {
-
+await Educacion.sync({ force: false }).then(async () => {
     const count = await Educacion.count();
     if (count === 0) {
-            await Educacion.bulkCreate([
-                { opcionEducacion: 'Primario Incompleto' },
-                { opcionEducacion: 'Primario Completo' },
-                { opcionEducacion: 'Secundario Incompleto' },
-                { opcionEducacion: 'Secundario Completo' },
-                { opcionEducacion: 'Terciario Incompleto' },
-                { opcionEducacion: 'Terciario Completo' },
-            ]);
+        await Educacion.bulkCreate([
+            { opcion_educacion: 'Primario' },
+            { opcion_educacion: 'Secundario' },
+            { opcion_educacion: 'Terciario' },
+        ]);
     }
 });

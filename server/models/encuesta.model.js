@@ -8,84 +8,82 @@ import { Educacion } from "./nivelEstudio.model.js"
 sequelize.options.timezone = '-03:00';
 
 export const Encuesta = sequelize.define("Encuesta", {
-    idEncuesta: {
+    id_encuesta: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    idGenero: {
+    id_genero: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        // references: {
-        //     model: "Genero",
-        //     key: "idGenero"
-        // }
+        references: {
+            model: "generos",
+            key: "id_genero"
+        }
     },
-    idLocalidad: {
+    id_localidad: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        // references: {
-        //     model: "Localidad",
-        //     key: "idLocalidad"
-        // }
+        references: {
+            model: "localidades",
+            key: "id_localidad"
+        }
     },
-    idEducacion: {
+    id_educacion: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        // references: {
-        //     model: "Educacion",
-        //     key: "idEducacion"
-        // }
+        references: {
+            model: "nivel_educacion",
+            key: "id_educacion"
+        }
     },
     edad: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    generoMusical: {
+    genero_musical: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    momentoEscuchaMusica: {
+    momento_escucha_musica: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    decadaMusical: {
+    decada_musical: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    frecuenciaEscucha: {
+    frecuencia_escucha: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    incluirProgramas: {
+    incluir_programas: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    descubrirMusica: {
+    descubrir_musica: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    dondeEscuchasMusica: {
+    donde_escuchas_musica: {
         type: DataTypes.INTEGER,
         allowNull: false,
     }
 }, {
     timestamps: true,
-    underscored: true,
     tableName: "Encuestas",
     modelName: "Encuesta"
 });
 
-Localidad.belongsTo(Encuesta, { foreignKey: "idLocalidad" });
-Encuesta.hasMany(Localidad, { foreignKey: "idLocalidad" });
+Localidad.belongsTo(Encuesta, { foreignKey: "id_localidad" });
+Encuesta.hasMany(Localidad, { foreignKey: "id_localidad" });
 
-Educacion.belongsTo(Encuesta, { foreignKey: "idEducacion" });
-Encuesta.hasMany(Educacion, { foreignKey: "idEducacion" });
+Educacion.belongsTo(Encuesta, { foreignKey: "id_educacion" });
+Encuesta.hasMany(Educacion, { foreignKey: "id_educacion" });
 
-Genero.belongsTo(Encuesta, { foreignKey: "idGenero" });
-Encuesta.hasMany(Genero, { foreignKey: "idGenero" });
+Genero.belongsTo(Encuesta, { foreignKey: "id_genero" });
+Encuesta.hasMany(Genero, { foreignKey: "id_genero" });
 
-await Educacion.sync();
-await Localidad.sync();
-await Genero.sync();
-await Encuesta.sync()
+await Encuesta.sync({ force: false }).then(() => {
+    console.log('Tabla de usuarios creada')
+})

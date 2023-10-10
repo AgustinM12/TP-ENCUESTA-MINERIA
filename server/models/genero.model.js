@@ -2,32 +2,36 @@ import { sequelize } from "../config/db.js";
 import { DataTypes } from "sequelize";
 
 export const Genero = sequelize.define("Genero", {
-    idGenero: {
+    id_genero: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    opcionesGeneros: {
+    opciones_generos: {
         type: DataTypes.STRING,
         allowNull: false,
     }
 }, {
     timestamps: false,
-    underscored: true,
     tableName: "Generos",
     modelName: "Genero"
 });
 
-Genero.afterSync(async () => {
-    // Verifica si ya existen registros en la tabla Genero
-    const generoCount = await Genero.count();
-
-    // Si no existen registros, crea los registros "hombre" y "mujer"
-    if (generoCount === 0) {
-        await Genero.bulkCreate([
-            { idGenero: 1, opcionesGeneros: 'Hombre' },
-            { idGenero: 2, opcionesGeneros: 'Mujer' },
-            { idGenero: 3, opcionesGeneros: 'Otro' },
-        ]);
+await Genero.sync({ force: false }).then(async () => {
+    console.log('Tabla de genero creada');
+    // Verificar si ya existen registros en la tabla
+    const count = await Genero.count();
+    if (count === 0) {
+        // Crear los registros de roles después de crear la tabla
+        try {
+            await Genero.bulkCreate([
+                { id_genero: 1, opciones_generos: 'Hombre' },
+                { id_genero: 2, opciones_generos: 'Mujer' },
+                { id_genero: 3, opciones_generos: 'Prefiero no decirlo' },
+            ]);
+            console.log('registros de generos creados exitosamente');
+        } catch (error) {
+            console.error('Error al crear los registros generos', error);
+        }
     }
 });
