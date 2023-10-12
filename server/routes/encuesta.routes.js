@@ -8,3 +8,16 @@ encuestaRouter.get("/findAllEncuestas", ctrlFindAllEncuestas)
 
 encuestaRouter.get("/findResults", ctrlFindResults)
 
+
+//RENDERIZACIONES
+encuestaRouter.get("/Formulario1", (req, res) => {
+    res.render("index.html")
+})
+
+encuestaRouter.get("/Formulario2", (req, res) => {
+    res.render("encuesta.html")
+})
+
+encuestaRouter.get("/fin", (req, res) => {
+    res.render("final.html")
+})
