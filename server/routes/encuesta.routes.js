@@ -1,4 +1,4 @@
-import {Router} from "express";
+import { Router } from "express";
 import { ctrlCreateEncuesta, ctrlFindAllEncuestas, ctrlFindResults } from "../controllers/encuesta.controllers.js"
 export const encuestaRouter = Router()
 
@@ -11,13 +11,13 @@ encuestaRouter.get("/findResults", ctrlFindResults)
 
 //RENDERIZACIONES
 encuestaRouter.get("/Formulario1", (req, res) => {
-    res.render("index.html")
+    res.render("../../client/index.html")
 })
 
 encuestaRouter.get("/Formulario2", (req, res) => {
-    res.render("encuesta.html")
+    res.render("../../client/encuesta.html")
 })
 
 encuestaRouter.get("/fin", (req, res) => {
-    res.render("final.html")
+    res.render("../../client/final.html")
 })
