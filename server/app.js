@@ -26,6 +26,7 @@ app.use(morgan("combined", {
     }
 }));
 app.use(express.json());
+app.use(express.static(path.join(process.cwd(), '../client/public/html')));
 app.use(encuestaRouter)
 
 app.listen(environment.PORT, async () => {
