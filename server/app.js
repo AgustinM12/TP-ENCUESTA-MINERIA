@@ -7,7 +7,9 @@ import "dotenv/config"
 import { createLogs } from "./helpers/logs.js"
 import { environment } from "./config/environment.js";
 import { syncDB } from "./config/db.js";
-import {encuestaRouter} from "./routes/encuesta.routes.js";
+import { encuestaRouter } from "./routes/encuesta.routes.js";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const app = express()
 
@@ -25,8 +27,15 @@ app.use(morgan("combined", {
         }
     }
 }));
+
+// Configurar el middleware para servir archivos estáticos
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+app.use(express.static(path.join(__dirname, "../client/public"), { "extensions": ["html", "css"] }));
+
 app.use(express.json());
 app.use(encuestaRouter)
+
 
 app.listen(environment.PORT, async () => {
     try {
