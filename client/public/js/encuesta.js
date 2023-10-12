@@ -16,8 +16,8 @@ form.addEventListener("submit", async (e) => {
     const decada_musical = document.getElementById("decada_musical").value
     const frecuencia_escucha = document.getElementById("frecuencia_escucha").value
     const incluir_programas = document.getElementById("incluir_programas").value
-    const descubrir_musica = document.getElementById("fechaNacimiento").value
-    const donde_escuchas_musica = document.getElementById("genero").value;
+    const descubrir_musica = document.getElementById("descubrir_musica").value
+    const donde_escuchas_musica = document.getElementById("donde_escuchas_musica").value;
 
     console.log(
         "genero musical preferido: ", genero_musical, "momento en el que escucha musica: ", momento_escucha_musica,

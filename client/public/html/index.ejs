@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIO RADIO</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <main id="cuerpo">
+        <form id="form">
+            <section id="1">
+                <h1>Primero, cuentanos algo de ti...</h1>
+                <div class="usuario">
+                    <label for="edad">Edad</label>
+                    <input type="number" name="edad" id="edad" placeholder="Ingresa tu edad">
+                    <label for="genero">Género</label>
+                    <select name="genero" id="id_genero">
+                        <option value=0 selected disabled>-</option>
+                        <option value=1>Masculino</option>
+                        <option value=2>Femenino</option>
+                        <option value=3>No Especifícar</option>
+                    </select>
+                    <label for="localidad">Localidad</label>
+                    <select name="localidad" id="id_localidad">
+                        <option value=0 selected disabled>-</option>
+                        <option value=1>Formosa</option>
+                        <option value=2>Colonia Pastoril</option>
+                        <option value=3>Gran Guardia</option>
+                        <option value=4>Mariano Boedo</option>
+                        <option value=5>Mojon de fierro</option>
+                        <option value=6>San Hilario</option>
+                        <option value=7>Villa del Carmen</option>
+                        <option value=8>Villa Trinidad</option>
+                        <option value=9>Puerto Dalmacia</option>
+                        <option value=10>Tres Marias</option>
+                    </select>
+                    <label for="nivel-estudio">Nivel de estudio</label>
+                    <select name="nivel-estudio" id="id_educacion">
+                        <option value=0>-</option>
+                        <option value=1>Primario</option>
+                        <option value=2>Secundario</option>
+                        <option value=3>Superior</option>
+                        <option value=4>Otro</option>
+                    </select>
+                </div>
+                <a href="#2" id="btn">
+                    <p>Siguiente</p>
+                </a>
+            </section>
+            <section>
+                <div>
+                    <p>...</p>
+                </div>
+            </section>
+            <section id="2">
+                <h1>Cómo te gusta escuchar musica?</h1>
+                <div class="formulario">
+                    <label for="genero_musical">¿Cuál es tu genero musical de preferencia?</label>
+                    <select name="genero_musical" id="genero_musical">
+                        <option value=0 selected disabled>-</option>
+                        <option value=1>Pop</option>
+                        <option value=2>Rock</option>
+                        <option value=3>Hip-Hop</option>
+                        <option value=4>Trap/Rap</option>
+                        <option value=5>Reggaeton</option>
+                        <option value=6>Cumbia</option>
+                        <option value=7>Folclore</option>
+                        <option value=8>Electrónica</option>
+                        <option value=9>Bachata</option>
+                        <option value=10>Corridos</option>
+                        <option value=11>Otros</option>
+                    </select>
+                    <label for="horario">¿En qué momento del día escuchas música?</label>
+                    <select name="horario" id="momento_escucha_musica">
+                        <option value=0 selected disabled>-</option>
+                        <option value=1>Mañana</option>
+                        <option value=2>Mediodía</option>
+                        <option value=3>Siesta</option>
+                        <option value=4>Tarde</option>
+                        <option value=5>Noche</option>
+                        <option value=6>Madrugada</option>
+                    </select>
+                    <label for="decada">¿Cuál es tu década musical favorita?</label>
+                    <select name="decada" id="decada_musical">
+                        <option value=0 selected disabled>-</option>
+                        <option value=1>Década 1960</option>
+                        <option value=2>Década 1970</option>
+                        <option value=3>Década 1980</option>
+                        <option value=4>Década 1990</option>
+                        <option value=5>Década 2000</option>
+                        <option value=6>Década 2010</option>
+                        <option value=7>Década actual</option>
+                        <option value=8>No tengo una década favorita</option>
+                    </select>
+                    <label for="lugar">¿En donde sueles escuchar música?</label>
+                    <select name="lugar" id="donde_escuchas_musica">
+                        <option value=0>-</option>
+                        <option value=1>En mi casa</option>
+                        <option value=2>En mi trabajo</option>
+                        <option value=3>En la escuela</option>
+                        <option value=4>En el transporte</option>
+                        <option value=5>En el auto</option>
+                        <option value=6>En otro sitio</option>
+                    </select>
+                </div>
+                <a href="#3" id="btn">
+                    <p>Siguiente</p>
+                </a>
+            </section>
+            <section>
+                <div>
+                    <p>...</p>
+                </div>
+            </section>
+            <section id="3">
+                <h1>Y respecto a una radio?</h1>
+                <div class="formulario">
+
+                    <label for="genero-particular">¿Prefieres más programas por genero musical?</label>
+                    <select name="genero-particular" id="incluir_programas">
+                        <option value=0>-</option>
+                        <option value=1>Si, me gustaría</option>
+                        <option value=2>No, prefiero una variedad de generos</option>
+                    </select>
+                    <label for="cancion-favorita">¿Música nueva o repetir tus canciones?
+                        favoritas?</label>
+                    <select name="cancion-favorita" id="descubrir_musica">
+                        <option value=0>-</option>
+                        <option value=1>Me encantaría descubrir música nueva</option>
+                        <option value=2>Prefiero escuchar mis éxitos favoritos</option>
+                    </select>
+                    <label for="frecuencia">¿Con qué frecuencia escuchas la radio?</label>
+                    <select name="frecuencia" id="frecuencia_escucha">
+                        <option value=0>-</option>
+                        <option value=1>A diario</option>
+                        <option value=2>Una vez a la semana</option>
+                        <option value=3>Varias veces al mes</option>
+                        <option value=4>Raramente</option>
+                        <option value=5>Nunca</option>
+                        <option value=6>Solo en ocasiones especiales</option>
+                    </select>
+                </div>
+                <button type="submit">Enviar</button>
+            </section>
+        </form>
+    </main>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="../js/encuesta.js"></script>
+</body>
+
+</html>
