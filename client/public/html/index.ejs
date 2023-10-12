@@ -13,7 +13,7 @@
         <form id="form">
             <section id="1">
                 <h1>Primero, cuentanos algo de ti...</h1>
-                <div class="usuario">
+                <div class="formulario">
                     <label for="edad">Edad</label>
                     <input type="number" name="edad" id="edad" placeholder="Ingresa tu edad">
                     <label for="genero">Género</label>
@@ -106,9 +106,14 @@
                         <option value=6>En otro sitio</option>
                     </select>
                 </div>
-                <a href="#3" id="btn">
-                    <p>Siguiente</p>
-                </a>
+                <div class="botones">
+                    <a href="#1" id="btn">
+                        <p>Atras</p>
+                    </a>
+                    <a href="#3" id="btn">
+                        <p>Siguiente</p>
+                    </a>
+                </div>
             </section>
             <section>
                 <div>
@@ -143,7 +148,12 @@
                         <option value=6>Solo en ocasiones especiales</option>
                     </select>
                 </div>
-                <button type="submit">Enviar</button>
+                <div class="botones">
+                    <a href="#2" id="btn">
+                        <p>Atras</p>
+                    </a>
+                    <button type="submit">Enviar</button>
+                </div>
             </section>
         </form>
     </main>

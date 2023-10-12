@@ -49,24 +49,7 @@ form{
     align-items: center;
     justify-content: center;
 }
-.usuario{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /*font*/
-    font-weight: 100;
-    font-size: 30px;
-    /*background*/
-    background-color: rgb(28, 26, 36);
-    /*border-radius*/
-    border-radius: 10px;
-    width: 400px;
-    height: 450px;
-    padding: 20px;
-    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.336);
-    margin-bottom: 30px;
-}
+
 
 input{
     width: 300px;
@@ -101,7 +84,7 @@ select option {
 }
 
 button{
-    width: 300px;
+    width: 150px;
     height: 50px;
     border: none;
     border-radius: 5px;
@@ -143,7 +126,7 @@ button:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 150px;
     height: 50px;
     border: none;
     border-radius: 5px;
@@ -158,6 +141,12 @@ button:hover{
     color: black;
 }
 
+.botones {
+    display: flex;
+    flex-direction: row;
+}
+
 #btn p{
     margin: 0;
+    font-size: 20px;
 }
