@@ -1,4 +1,3 @@
-const formulario = document.getElementById("formulario")
 const form = document.getElementById("form")
 
 form.addEventListener("submit", async (e) => {
@@ -11,58 +10,6 @@ form.addEventListener("submit", async (e) => {
 
     console.log("genero: ", id_genero, "localidad: ", id_localidad, "nivel de educacion: ", id_educacion, "edad: ", edad,);
 
-    const encuestaData1 = {
-        id_genero: id_genero,
-        id_localidad: id_localidad,
-        id_educacion: id_educacion,
-        edad: edad,
-    }
-
-    try {
-        const res = await fetch('/createEncuesta', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(encuestaData1)
-        });
-
-        const data = await res.json();
-        console.log({ data });
-
-        if (res.ok) {
-            Swal.fire({
-                icon: "success",
-                title: "Los datos han sido enviados correctamente.",
-                text: "Espero un momento a ser redireccionado...",
-                showConfirmButton: false
-            });
-            setTimeout(() => {
-                window.location.href = '/Formulario2';
-            }, 2000);
-        } else {
-
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: data.error,
-                confirmButtonText: 'Aceptar'
-            });
-
-        }
-
-    } catch (error) {
-        console.log(error);
-        Swal.fire({
-            icon: 'error',
-            title: 'No fue posible enviar los datos.',
-            text: 'Revisa los campos en el formulario'
-        });
-    }
-})
-
-formulario.addEventListener('submit', async (e) => {
-    e.preventDefault();
     //PAGINA 2
     const genero_musical = document.getElementById("genero_musical").value
     const momento_escucha_musica = document.getElementById("momento_escucha_musica").value
@@ -78,7 +25,11 @@ formulario.addEventListener('submit', async (e) => {
         "deseaas que se incluyan mas programas: ", incluir_programas, "deseaas que se descubra nueva musica: ", descubrir_musica,
         "donde escuchas musica?: ", donde_escuchas_musica,);
 
-    const encuestaData2 = {
+    const encuestaData = {
+        id_genero: id_genero,
+        id_localidad: id_localidad,
+        id_educacion: id_educacion,
+        edad: edad,
         genero_musical: genero_musical,
         momento_escucha_musica: momento_escucha_musica,
         decada_musical: decada_musical,
@@ -88,9 +39,8 @@ formulario.addEventListener('submit', async (e) => {
         donde_escuchas_musica: donde_escuchas_musica
     }
 
-    // SE USA LA PETICION POST PARA CREAR UN USUARIO
     try {
-        const res = await fetch('/createEncuesta', {
+        const response = await fetch('/createEncuesta', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -98,10 +48,10 @@ formulario.addEventListener('submit', async (e) => {
             body: JSON.stringify(encuestaData)
         });
 
-        const data = await res.json();
+        const data = await response.json();
         console.log({ data });
 
-        if (res.ok) {
+        if (response.ok) {
             Swal.fire({
                 icon: "success",
                 title: "Los datos han sido enviados correctamente.",
@@ -116,7 +66,7 @@ formulario.addEventListener('submit', async (e) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: data.error,
+                text: data.message,
                 confirmButtonText: 'Aceptar'
             });
 

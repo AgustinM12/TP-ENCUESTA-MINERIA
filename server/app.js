@@ -34,6 +34,7 @@ const __dirname = dirname(__filename);
 app.use(express.static(path.join(__dirname, "../client/public"), { "extensions": ["html", "css"] }));
 
 app.use(express.json());
+app.use(express.static(path.join(process.cwd(), '../client/public/html')));
 app.use(encuestaRouter)
 
 
