@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORMULARIO RADIO</title>
     <link rel="stylesheet" href="../css/index.css">
 </head>
+
 <body>
     <section id="cuerpo">
         <h1>Encuesta</h1>
-    <form class="formulario">
-        <label for="genero-musical">¿Cuál es tu genero musical de preferencia?</label>
+        <form class="formulario" id="formulario">
+            <label for="genero-musical">¿Cuál es tu genero musical de preferencia?</label>
             <select name="genero-musical" id="genero-musical">
                 <option value=0 selected disabled>-</option>
                 <option value=1>Pop</option>
@@ -25,7 +27,7 @@
                 <option value=10>Corridos</option>
                 <option value=11>Otros</option>
             </select>
-        <label for="horario">¿En qué momento del día escuchas música?</label>
+            <label for="horario">¿En qué momento del día escuchas música?</label>
             <select name="horario" id="momento_escucha_musica">
                 <option value=0 selected disabled>-</option>
                 <option value=1>Mañana</option>
@@ -35,7 +37,7 @@
                 <option value=5>Noche</option>
                 <option value=6>Madrugada</option>
             </select>
-        <label for="decada">¿Cuál es tu década musical favorita?</label>
+            <label for="decada">¿Cuál es tu década musical favorita?</label>
             <select name="decada" id="decada_musical">
                 <option value=0 selected disabled>-</option>
                 <option value=1>Década 1960</option>
@@ -80,9 +82,11 @@
                 <option value=6>En otro sitio</option>
             </select>
             <button type="submit">Enviar</button>
-    </form>
+        </form>
     </section>
-    
-    <script></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="../js/encuesta.js"></script>
 </body>
+
 </html>
