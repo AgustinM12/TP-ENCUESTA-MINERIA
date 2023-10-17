@@ -21,7 +21,7 @@ section{
 
 
 h1{
-    margin: 40px;;
+    margin: 20px;;
     font-size: 50px;
     font-weight: 100;
     padding: 0;
@@ -115,7 +115,7 @@ button:hover{
     width: 860px;
     height: 500px;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 
     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.336);
 
