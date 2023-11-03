@@ -10,6 +10,7 @@ import { syncDB } from "./config/db.js";
 import { encuestaRouter } from "./routes/encuesta.routes.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { asociaciones } from "./models/encuesta.model.js";
 
 const app = express()
 
@@ -41,6 +42,7 @@ app.use(encuestaRouter)
 app.listen(environment.PORT, async () => {
     try {
         syncDB()
+        await asociaciones()
         console.log("Coneccion a la DB exitosa");
         console.log(`Servidor corriendo en localhost:${environment.PORT}`);
     } catch (error) {

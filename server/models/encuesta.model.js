@@ -13,29 +13,17 @@ export const Encuesta = sequelize.define("Encuesta", {
         primaryKey: true,
         autoIncrement: true,
     },
-    id_genero: {
+    genero_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: {
-            model: "generos",
-            key: "id_genero"
-        }
     },
-    id_localidad: {
+    localidad_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: {
-            model: "localidades",
-            key: "id_localidad"
-        }
     },
-    id_educacion: {
+    educacion_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: {
-            model: "nivel_educacion",
-            key: "id_educacion"
-        }
     },
     edad: {
         type: DataTypes.INTEGER,
@@ -75,15 +63,22 @@ export const Encuesta = sequelize.define("Encuesta", {
     modelName: "Encuesta"
 });
 
-Localidad.belongsTo(Encuesta, { foreignKey: "id_localidad" });
-Encuesta.hasMany(Localidad, { foreignKey: "id_localidad" });
-
-Educacion.belongsTo(Encuesta, { foreignKey: "id_educacion" });
-Encuesta.hasMany(Educacion, { foreignKey: "id_educacion" });
-
-Genero.belongsTo(Encuesta, { foreignKey: "id_genero" });
-Encuesta.hasMany(Genero, { foreignKey: "id_genero" });
-
-await Encuesta.sync({ force: false }).then(() => {
+Encuesta.sync({ force: true }).then(() => {
     console.log('Tabla de usuarios creada')
 })
+
+
+export async function asociaciones() {
+
+    Encuesta.hasMany(Localidad, { foreignKey: "localidad_id", as: "localidadR" });
+    Localidad.belongsTo(Encuesta, { foreignKey: "localidad_id", as: "localidadR" });
+
+    Encuesta.hasMany(Educacion, { foreignKey: "educacion_id", as: "educacionR" });
+    Educacion.belongsTo(Encuesta, { foreignKey: "educacion_id", as: "educacionR" });
+
+    Encuesta.hasMany(Genero, { foreignKey: "genero_id", as: "generoR" });
+    Genero.belongsTo(Encuesta, { foreignKey: "genero_id", as: "generoR" });
+
+    return console.log("asociaciones creadas");
+}
+

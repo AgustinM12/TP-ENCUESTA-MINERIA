@@ -1,4 +1,4 @@
-import { createEncuestas, findAllEncuestas, contarRespuestasUnicas } from "../helpers/servicios.js";
+import { createEncuestas, findAllEncuestas, findAllEncuestas2 } from "../helpers/servicios.js";
 
 export const ctrlCreateEncuesta = async (req, res) => {
     const encuestaData = req.body;
@@ -25,13 +25,16 @@ export const ctrlFindAllEncuestas = async (req, res) => {
     }
 }
 
-export const ctrlFindResults = async (req, res) => {
+export const ctrlFindAllEncuestas2 = async (req, res) => {
     try {
-        const respuestas = await contarRespuestasUnicas();
-        return res.status(200).json(respuestas)
+        const encuestas = await findAllEncuestas2();
+        res.status(200).json(encuestas)
     } catch (error) {
         console.log("Error interno del servidor");
         console.log(error);
         return res.status(500).json(error)
+
     }
 }
+
+
