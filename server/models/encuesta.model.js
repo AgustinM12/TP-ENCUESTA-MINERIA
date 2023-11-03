@@ -1,9 +1,9 @@
 import { sequelize } from "../config/db.js";
 import { DataTypes } from "sequelize";
 
-import { Genero } from "./genero.model.js";
-import { Localidad } from "./localidad.model.js";
-import { Educacion } from "./nivelEstudio.model.js"
+import { Genero, generoF } from "./genero.model.js";
+import { Localidad, localF } from "./localidad.model.js";
+import { Educacion, educacionF } from "./nivelEstudio.model.js"
 
 sequelize.options.timezone = '-03:00';
 
@@ -59,26 +59,34 @@ export const Encuesta = sequelize.define("Encuesta", {
     }
 }, {
     timestamps: true,
-    tableName: "Encuestas",
+    tableName: "Encuesta",
     modelName: "Encuesta"
 });
 
-Encuesta.sync({ force: true }).then(() => {
-    console.log('Tabla de usuarios creada')
-})
-
+// Encuesta.sync({ force: false }).then(() => {
+//     console.log('Tabla de encuestas creada')
+// })
 
 export async function asociaciones() {
 
-    Encuesta.hasMany(Localidad, { foreignKey: "localidad_id", as: "localidadR" });
-    Localidad.belongsTo(Encuesta, { foreignKey: "localidad_id", as: "localidadR" });
 
-    Encuesta.hasMany(Educacion, { foreignKey: "educacion_id", as: "educacionR" });
-    Educacion.belongsTo(Encuesta, { foreignKey: "educacion_id", as: "educacionR" });
 
-    Encuesta.hasMany(Genero, { foreignKey: "genero_id", as: "generoR" });
-    Genero.belongsTo(Encuesta, { foreignKey: "genero_id", as: "generoR" });
+    Localidad.hasMany(Encuesta, { foreignKey: "localidad_id", as: "localidadR" });
+    Encuesta.belongsTo(Localidad, { foreignKey: "localidad_id", as: "localidadR" });
 
+    Educacion.hasMany(Encuesta, { foreignKey: "educacion_id", as: "educacionR" });
+    Encuesta.belongsTo(Educacion, { foreignKey: "educacion_id", as: "educacionR" });
+
+    Genero.hasMany(Encuesta, { foreignKey: "genero_id", as: "generoR" });
+    Encuesta.belongsTo(Genero, { foreignKey: "genero_id", as: "generoR" });
+
+
+    localF()
+    generoF()
+    educacionF()
+
+    sequelize.sync()
     return console.log("asociaciones creadas");
+
 }
 

@@ -13,26 +13,25 @@ export const Genero = sequelize.define("Genero", {
     }
 }, {
     timestamps: false,
-    tableName: "Generos",
+    tableName: "Genero",
     modelName: "Genero"
 });
 
-await Genero.sync({ force: false })
-// .then(async () => {
-//     console.log('Tabla de genero creada');
-//     // Verificar si ya existen registros en la tabla
-//     const count = await Genero.count();
-//     if (count === 0) {
-//         // Crear los registros de roles después de crear la tabla
-//         try {
-//             await Genero.bulkCreate([
-//                 { opciones_generos: 'Hombre' },
-//                 { opciones_generos: 'Mujer' },
-//                 { opciones_generos: 'Prefiero no decirlo' },
-//             ]);
-//             console.log('registros de generos creados exitosamente');
-//         } catch (error) {
-//             console.error('Error al crear los registros generos', error);
-//         }
-//     }
-// });
+export async function generoF () {
+    console.log('Tabla de genero creada');
+    // Verificar si ya existen registros en la tabla
+    const count = await Genero.count();
+    if (count === 0) {
+        // Crear los registros de roles después de crear la tabla
+        try {
+            await Genero.bulkCreate([
+                { opciones_generos: 'Hombre' },
+                { opciones_generos: 'Mujer' },
+                { opciones_generos: 'Prefiero no decirlo' },
+            ]);
+            console.log('registros de generos creados exitosamente');
+        } catch (error) {
+            console.error('Error al crear los registros generos', error);
+        }
+    }
+}
