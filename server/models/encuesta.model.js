@@ -69,8 +69,6 @@ export const Encuesta = sequelize.define("Encuesta", {
 
 export async function asociaciones() {
 
-
-
     Localidad.hasMany(Encuesta, { foreignKey: "localidad_id", as: "localidadR" });
     Encuesta.belongsTo(Localidad, { foreignKey: "localidad_id", as: "localidadR" });
 
@@ -80,12 +78,15 @@ export async function asociaciones() {
     Genero.hasMany(Encuesta, { foreignKey: "genero_id", as: "generoR" });
     Encuesta.belongsTo(Genero, { foreignKey: "genero_id", as: "generoR" });
 
+    sequelize.sync().then(async () => {
+        await localF()
+        await generoF()
+        await educacionF()
+    })
 
-    localF()
-    generoF()
-    educacionF()
 
-    sequelize.sync()
+
+
     return console.log("asociaciones creadas");
 
 }
