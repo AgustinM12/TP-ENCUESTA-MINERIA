@@ -18,7 +18,7 @@ app.use(cors());
 app.use(helmet(
     { contentSecurityPolicy: false }
 ));
-app.use(morgan("combined", {
+/*app.use(morgan("combined", {
     stream: {
         write: (message) => {
             const currentFilePath = new URL(import.meta.url).pathname;
@@ -28,6 +28,7 @@ app.use(morgan("combined", {
         }
     }
 }));
+*/
 
 // Configurar el middleware para servir archivos estáticos
 const __filename = fileURLToPath(import.meta.url);
