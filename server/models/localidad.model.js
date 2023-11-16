@@ -33,6 +33,7 @@ export async function localF() {
             { opcion_localidad: 'Villa Trinidad' },
             { opcion_localidad: 'Puerto Dalmacia' },
             { opcion_localidad: 'Tres Marias' },
+            { opcion_localidad: 'Otros' },
         ]);
     }
 }

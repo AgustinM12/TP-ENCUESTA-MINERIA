@@ -15,55 +15,55 @@ export const Encuesta = sequelize.define("Encuesta", {
     },
     genero_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     localidad_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     educacion_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     edad: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     genero_musical: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     momento_escucha_musica: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     decada_musical: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     frecuencia_escucha: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     incluir_programas: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     descubrir_musica: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     donde_escuchas_musica: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     }
 }, {
-    timestamps: true,
+    timestamps: false,
     tableName: "Encuesta",
-    modelName: "Encuesta"
+    modelName: "Encuesta",
 });
 
-// Encuesta.sync({ force: false }).then(() => {
+// Encuesta.sync({ force: true }).then(() => {
 //     console.log('Tabla de encuestas creada')
 // })
 
@@ -83,9 +83,6 @@ export async function asociaciones() {
         await generoF()
         await educacionF()
     })
-
-
-
 
     return console.log("asociaciones creadas");
 

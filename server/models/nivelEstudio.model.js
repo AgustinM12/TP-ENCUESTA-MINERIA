@@ -25,6 +25,7 @@ export async function educacionF() {
             { opcion_educacion: 'Primario' },
             { opcion_educacion: 'Secundario' },
             { opcion_educacion: 'Terciario' },
+            { opcion_educacion: 'Otros' },
         ]);
     }
 };
