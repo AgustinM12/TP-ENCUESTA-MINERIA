@@ -58,7 +58,7 @@ export const Encuesta = sequelize.define("Encuesta", {
         allowNull: true,
     }
 }, {
-    timestamps: false,
+    timestamps: true,
     tableName: "Encuesta",
     modelName: "Encuesta",
 });
